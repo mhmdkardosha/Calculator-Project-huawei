@@ -39,9 +39,6 @@ if __name__ == '__main__':
             answer += div(float(a), float(b))
         elif '%' in eq:
             a, b = eq.split('%')
-            if b == '0':
-                print('Invalid equation')
-                continue
             answer += mod(float(a), float(b))
         else:
             print('Invalid equation, please try again with +, -, *, /, %')

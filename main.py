@@ -1,61 +1,58 @@
 def add(a, b):
     return a + b
 
-
 def sub(a, b):
     return a - b
-
 
 def mul(a, b):
     return a * b
 
-
 def div(a, b):
+    if b == 0:
+        print('Invalid equation: Division by zero')
+        return None
     return a / b
 
-
 def mod(a, b):
+    if b == 0:
+        print('Invalid equation: Modulo by zero')
+        return None
     return a % b
 
-
-if __name__ == '__main__':
-    eq = input('Enter equation: ')
+def main():
     while True:
-        answer = 0
+        eq = input('Enter equation: ')
         if '+' in eq:
             a, b = eq.split('+')
-            answer += add(float(a), float(b))
+            answer = add(float(a), float(b))
         elif '-' in eq:
             a, b = eq.split('-')
-            answer += sub(float(a), float(b))
+            answer = sub(float(a), float(b))
         elif '*' in eq:
             a, b = eq.split('*')
-            answer += mul(float(a), float(b))
+            answer = mul(float(a), float(b))
         elif '/' in eq:
             a, b = eq.split('/')
-            if b == '0':
-                print('Invalid equation')
+            answer = div(float(a), float(b))
+            if answer is None:
                 continue
-            answer += div(float(a), float(b))
         elif '%' in eq:
             a, b = eq.split('%')
-            if b == '0':
-                print('Invalid equation')
+            answer = mod(float(a), float(b))
+            if answer is None:
                 continue
-            answer += mod(float(a), float(b))
         else:
             print('Invalid equation, please try again with +, -, *, /, %')
             continue
-        print('Answer: ' + str(answer))
+
+        print('Answer:', answer)
         ans = input('Do you want to continue? (y/n): ')
-        while True:
-            if ans == 'y':
-                eq = input('Enter equation: ')
-                break
-            elif ans == 'n':
-                print('Thank you for using our calculator')
-                exit()
-            else:
-                print('Invalid answer, please try again with y or n')
-                ans = input('Do you want to continue? (y/n): ')
-                continue
+        while ans not in ['y', 'n']:
+            print('Invalid answer, please try again with y or n')
+            ans = input('Do you want to continue? (y/n): ')
+        if ans == 'n':
+            print('Thank you for using our calculator')
+            break
+
+if __name__ == '__main__':
+    main()

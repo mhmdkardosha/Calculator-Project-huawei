@@ -50,15 +50,4 @@ def main():
             print('Invalid equation, please try again with +, -, *, /, %')
             continue
 
-        print('Answer:', answer)
-        ans = input('Do you want to continue? (y/n): ')
-        while ans not in ['y', 'n']:
-            print('Invalid answer, please try again with y or n')
-            ans = input('Do you want to continue? (y/n): ')
-        if ans == 'n':
-            print('Thank you for using our calculator')
-            break
-
-
-if __name__ == '__main__':
-    main()
+       
